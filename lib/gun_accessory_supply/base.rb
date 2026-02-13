@@ -6,10 +6,10 @@ module GunAccessorySupply
 
       begin
         ssh_connection = Net::SSH.start(
-          GunAccessorySupply.config.proxy_host || GunAccessorySupply.config.sftp_host,
+          GunAccessorySupply.config.sftp_host,
           options[:username],
           password: options[:password],
-          port: GunAccessorySupply.config.proxy_port || GunAccessorySupply.config.sftp_port
+          port: GunAccessorySupply.config.sftp_port
         )
         sftp_session = Net::SFTP::Session.new(ssh_connection)
 
@@ -93,7 +93,7 @@ module GunAccessorySupply
     end
 
     def parse_row(row)
-      row.gsub('"','').gsub("\r\n", '').encode('UTF-8', invalid: :replace).split(",")
+      CSV.parse_line(row.gsub("\r\n", '').encode('UTF-8', invalid: :replace))
     end
 
     def write_file(path, data)

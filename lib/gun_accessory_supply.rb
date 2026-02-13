@@ -45,8 +45,8 @@ module GunAccessorySupply
     )
 
     def initialize
-      @sftp_host ||= "50.233.131.250"
-      @sftp_port ||= "2222"
+      @sftp_host ||= "gas.hostedftp.com"
+      @sftp_port ||= "22"
     end
   end
 end

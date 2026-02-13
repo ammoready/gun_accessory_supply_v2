@@ -17,7 +17,7 @@ module GunAccessorySupply
     end
 
     def all
-      tempfile = get_most_recent_file(GunAccessorySupply.config.inventory_filename_prefix, 'out')
+      tempfile = get_file('catalog_standard.csv', 'out')
       items = []
 
       File.open(tempfile).each_with_index do |row, i|
@@ -31,7 +31,7 @@ module GunAccessorySupply
         item = {
           item_identifier: row[@headers.index('Item ID')].try(:strip),
           quantity:        row[@headers.index('Available Qty')].to_i,
-          price:           row[@headers.index('Dealer Cost')].try(:strip),
+          price:           row[@headers.index('Unit Price')].try(:strip),
         }
 
         items << item
@@ -44,7 +44,7 @@ module GunAccessorySupply
     end
 
     def quantity
-      tempfile = get_most_recent_file(GunAccessorySupply.config.inventory_filename_prefix, 'out')
+      tempfile = get_file('catalog_standard.csv', 'out')
       items = []
 
       File.open(tempfile).each_with_index do |row, i|
