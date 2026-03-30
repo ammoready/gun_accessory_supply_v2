@@ -28,11 +28,11 @@ module GunAccessorySupply
         end
       end
 
-      get_full_filenames(filename_regexes, 'out')
+      get_full_filenames(filename_regexes, remote_path('out'))
     end
 
     def file_data(filename)
-      CXML::Parser.new.parse(get_file(filename, 'out').read)
+      CXML::Parser.new.parse(get_file(filename, remote_path('out')).read)
     end
 
   end

@@ -58,7 +58,7 @@ module GunAccessorySupply
     end
 
     def submit!
-      write_file("/in/#{filename}", self.to_xml)
+      write_file("/#{remote_path('in', filename)}", self.to_xml)
     end
 
     def to_xml

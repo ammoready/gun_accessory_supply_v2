@@ -12,7 +12,7 @@ module GunAccessorySupply
     end
 
     def all
-      tempfile = get_file('price_catalog.csv', 'out')
+      tempfile = get_file('price_catalog.csv', remote_path('out'))
       items = []
 
       File.open(tempfile).each_with_index do |row, i|

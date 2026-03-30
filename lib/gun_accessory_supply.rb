@@ -35,6 +35,7 @@ module GunAccessorySupply
     attr_accessor *%i(
       sftp_host
       sftp_port
+      base_dir
       inventory_filename_prefix
       po_filename_prefix
       tracking_filename_prefix
@@ -47,6 +48,7 @@ module GunAccessorySupply
     def initialize
       @sftp_host ||= "gas.hostedftp.com"
       @sftp_port ||= "22"
+      @base_dir  ||= "gunaccess"
     end
   end
 end

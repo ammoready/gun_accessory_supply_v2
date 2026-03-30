@@ -24,6 +24,10 @@ module GunAccessorySupply
 
     protected
 
+    def remote_path(*segments)
+      File.join(GunAccessorySupply.config.base_dir, *segments)
+    end
+
     # Wrapper to `self.requires!` that can be used as an instance method.
     def requires!(*args)
       self.class.requires!(*args)
